@@ -1,22 +1,28 @@
-import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { ScriptLoadService } from '../script-load.service';
-import { FirebaseApp } from 'angularfire2';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {Component, AfterViewInit, ViewChild, ElementRef, OnInit} from '@angular/core';
+import {ScriptLoadService} from '../script-load.service';
+import {FirebaseApp} from 'angularfire2';
+import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
+import {Observable} from 'rxjs';
 
 const your_API_key = 'AIzaSyAwVnwE1bEZf_Bkk_pSkGM0XlBSXJocVUY';
 const url = `https://maps.googleapis.com/maps/api/js?key=${your_API_key}&libraries=geometry`;
+
+declare var ol: any;
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements AfterViewInit {
+export class MapComponent implements OnInit {
 
-  maps: any;
+  latitude = 18.5204;
+  longitude = 73.8567;
+
   map: any;
+
+  // maps: any;
+  // map: any;
   markersRef: AngularFireList<any>;
   markers: Observable<any[]>;
   markersArray: Array<any>;
@@ -36,106 +42,74 @@ export class MapComponent implements AfterViewInit {
     this.furthest = null;
   }
 
-  ngAfterViewInit(): void {
-    this.load.loadScript(url, 'gmap', () => {
-      this.maps = window['google']['maps'];
-      this.telAviv = new this.maps.LatLng(32.064850, 34.763226);
-      this.map = new this.maps.Map(this.mapElm.nativeElement, {
-        zoom: 3,
-        center: this.telAviv,
-        scrollwheel: true,
-        panControl: false,
-        mapTypeControl: false,
-        zoomControl: true,
-        streetViewControl: false,
-        scaleControl: true,
-        zoomControlOptions: {
-          style: this.maps.ZoomControlStyle.LARGE,
-          position: this.maps.ControlPosition.RIGHT_BOTTOM
+  ngOnInit() {
+    const mousePositionControl = new ol.control.MousePosition({
+      coordinateFormat: ol.coordinate.createStringXY(4),
+      projection: 'EPSG:4326',
+      // comment the following two lines to have the mouse position
+      // be placed within the map.
+      className: 'custom-mouse-position',
+      target: document.getElementById('mouse-position'),
+      undefinedHTML: '&nbsp;'
+    });
+
+
+    this.map = new ol.Map({
+      target: 'map',
+      controls: ol.control.defaults({
+        attributionOptions: {
+          collapsible: false
         }
-      });
+      }).extend([mousePositionControl]),
+      layers: [
+        new ol.layer.Tile({
+          source: new ol.source.OSM()
+        })
+      ],
+      view: new ol.View({
+        center: ol.proj.fromLonLat([73.8567, 18.5204]),
+        zoom: 8
+      })
     });
 
-    this.loadAllMarkers();
+    this.map.on('click', function (args) {
+      console.log(args.coordinate);
+      const lonlat = ol.proj.transform(args.coordinate, 'EPSG:3857', 'EPSG:4326');
+      console.log(lonlat);
 
-    /**
-    * Only load new markers
-    */
-
-    this.markers
-      .subscribe(actions => {
-        actions.forEach(action => {
-          console.log('MARKER', action.payload.val());
-          let c = action.payload.val();
-          let marker = new this.maps.Marker({
-            position: c.position,
-            title: c.title,
-            map: this.map
-          });
-          this.infowindow = new this.maps.InfoWindow({
-            content: c.title
-          });
-          marker.addListener('click', () => {
-            this.infowindow.open(this.map, marker);
-          });
-          this.markersArray[action.payload.key] = marker;
-        });
-      });
-  }
-
-  loadAllMarkers(): void {
-    this.db.list('/markers').query.once("value").then(snapshot => {
-      snapshot.forEach(child => {
-        let c = child.val();
-        let marker = new this.maps.Marker({
-          position: c.position,
-          title: c.title,
-          map: this.map
-        });
-        this.infowindow = new this.maps.InfoWindow({
-          content: c.title
-        });
-        marker.addListener('click', () => {
-          this.infowindow.open(this.map, marker);
-        });
-        this.markersArray[child.key] = marker;
-      });
+      const lon = lonlat[0];
+      const lat = lonlat[1];
+      alert(`lat: ${lat} long: ${lon}`);
     });
 
+    this.addPoint(this.latitude, this.longitude);
+
   }
 
-  clearMarkers() {
-    let iterator = Object.keys(this.markersArray);
-    for (let i = 0; i < iterator.length; i++) {
-      console.log(this.markersArray[iterator[i]]);
-      this.markersArray[iterator[i]].setMap(null);
-    }
+  setCenter() {
+    const view = this.map.getView();
+    view.setCenter(ol.proj.fromLonLat([this.longitude, this.latitude]));
+    view.addMarker(ol.proj.fromLonLat([this.longitude, this.latitude]));
+    view.setZoom(8);
   }
 
-  deleteEverything() {
-    this.markersRef.remove();
-  }
-
-  findLongest() {
-    let iterator = Object.keys(this.markersArray);
-    for (let i = 0; i < iterator.length; i++) {
-      this.distanceArray.push({
-        distance: this.calculate(this.markersArray[iterator[i]].getPosition()),
-        marker: this.markersArray[iterator[i]]
-      });
-    }
-    this.distanceArray.sort(function(a, b) {
-      return b.distance - a.distance;
+  addPoint(lat: number, lng: number) {
+    const vectorLayer = new ol.layer.Vector({
+      source: new ol.source.Vector({
+        features: [new ol.Feature({
+          geometry: new ol.geom.Point(ol.proj.transform([lng, lat], 'EPSG:4326', 'EPSG:3857')),
+        })]
+      }),
+      style: new ol.style.Style({
+        image: new ol.style.Icon({
+          anchor: [0.5, 0.5],
+          anchorXUnits: 'fraction',
+          anchorYUnits: 'fraction',
+          src: 'assets/img/marker-30.png'
+        })
+      })
     });
-    console.log(this.distanceArray);
-    this.furthest = this.distanceArray[0].marker.getTitle();
-    this.map.panTo(this.distanceArray[0].marker.getPosition());
-    this.map.setZoom(14);
-
-  }
-
-  calculate(point_a: any) {
-	   return Math.round(this.maps.geometry.spherical.computeDistanceBetween(point_a, this.telAviv));
+    this.map.addLayer(vectorLayer);
   }
 
 }
