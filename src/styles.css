@@ -907,3 +907,5 @@ top: 50%;
 /* line 40, D:/Github/lightweight-admin-template/sass/lightweight-admin-template.scss */
 .card__big-text {
   font-size: 10rem; }
+
+body { margin: 0; }

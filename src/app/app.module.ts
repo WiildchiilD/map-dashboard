@@ -16,6 +16,8 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {HttpClientModule} from '@angular/common/http';
 import {UserService} from './services/users.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule, MatInputModule, MatPaginatorModule, MatTableModule} from '@angular/material';
 
 
 const config = {
@@ -45,6 +47,11 @@ const config = {
     RouterModule.forRoot([]),
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatInputModule,
+    MatPaginatorModule,
   ],
   providers: [
     ScriptLoadService,
