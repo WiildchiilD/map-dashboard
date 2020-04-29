@@ -20,11 +20,13 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "angular-bootstrap-md": "^9.2.0",
     "angular-osm": "^1.2.2",
     "angularfire2": "^5.0.0-rc.10",
     "core-js": "^2.5.4",
     "firebase": "^5.0.4",
     "jquery": "^3.5.0",
+    "mdbootstrap": "^4.17.0",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

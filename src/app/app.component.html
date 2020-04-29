@@ -1,11 +1,232 @@
 <div *ngIf="afAuth.user | async as user; else showLogin">
   <h3>Logged in as {{ user.displayName }}</h3>
   <app-map></app-map>
+
+
   <button (click)="logout()">Logout</button>
 </div>
+
+
 <ng-template #showLogin>
-  <app-map></app-map>
+
+
+  <header role="header" class="site__header header" id="home">
+    <div class="header__wrapper">
+
+      <div class="header__brand">
+        <img src="../../favicon.ico"/>
+        <div class="header__title">
+          Lightweight Admin Template
+        </div>
+      </div>
+
+      <div class="header__account account account--has-login">
+        <div class="account__wrapper">
+          <img class="account__img" src=../../favicon.ico"/>
+          <span class="account__name">Irfan</span>
+        </div>
+        <i class="account__arrow fa fa-angle-down js--show-dropdown-menu"></i>
+
+        <div class="account__menu">
+          <ul class="account__menu-wrapper">
+            <li class="account__menu-item"><a href="">Profile</a></li>
+            <li class="account__menu-item"><a href="">Logout</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="header__nav--mobile">
+        <div class="header__nav-btn" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+
+  <main role="main" class="site__main main">
+    <nav class="main__nav nav">
+
+      <ul class="nav__wrapper">
+        <li class="nav__item nav__item--active">
+          <a href="index.html">
+            <i class="nav__icon fa fa-dashboard"></i> Dashboard
+          </a>
+        </li>
+
+        <li class="nav__item nav__item--has-child">
+          <a href="#">
+            <i class="nav__icon fa fa-desktop"></i> UI Elements
+            <i class="nav__arrow fa fa-angle-down"></i>
+          </a>
+
+          <ul class="nav__wrapper nav__wrapper--child">
+            <li class="nav__item--child"><a routerLink="/bracelets" >Devices</a></li>
+            <li class="nav__item--child"><a routerLink="/users" >Users</a></li>
+            <li class="nav__item--child"><a href="buttons.html">Buttons</a></li>
+            <li class="nav__item--child"><a href="alert.html">Alert</a></li>
+          </ul>
+        </li>
+
+        <li class="nav__item"><a href="tables.html">
+          <i class="nav__icon fa fa-table"></i> Tables</a>
+        </li>
+        <li class="nav__item"><a href="forms.html">
+          <i class="nav__icon fa fa-edit"></i> Forms</a>
+        </li>
+
+      </ul>
+
+      <div class="footer__wrapper">
+
+        <div class="footer__text">
+          <span>Crafted with &nbsp;<i class="fa fa-heart-o"></i>&nbsp; by Irfan Maulana</span>
+        </div>
+
+        <ul class="footer__list">
+          <li class="footer__icon footer__icon--facebook">
+            <a rel="nofollow" href="https://www.facebook.com/mazipanneh">
+              <i class="fa fa-facebook-square"></i>
+            </a>
+          </li>
+          <li class="footer__icon footer__icon--twitter">
+            <a rel="nofollow" href="https://twitter.com/Maz_Ipan">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li class="footer__icon footer__icon--instagram">
+            <a rel="nofollow" href="https://instagram.com/maz_ipan">
+              <i class="fa fa-instagram"></i>
+            </a>
+          </li>
+          <li class="footer__icon footer__icon--linkedin">
+            <a rel="nofollow" href="https://id.linkedin.com/in/irfanmaulanamazipan">
+              <i class="fa fa-linkedin"></i>
+            </a>
+          </li>
+          <li class="footer__icon footer__icon--slideshare">
+            <a rel="nofollow" href="https://www.slideshare.net/IrfanMaulana21">
+              <i class="fa fa-slideshare"></i>
+            </a>
+          </li>
+          <li class="footer__icon footer__icon--github">
+            <a rel="nofollow" href="https://github.com/mazipan">
+              <i class="fa fa-github"></i>
+            </a>
+          </li>
+          <li class="footer__icon footer__icon--wordpress">
+            <a rel="nofollow" href="https://mazipanneh.wordpress.com/">
+              <i class="fa fa-wordpress"></i>
+            </a>
+          </li>
+          <li class="footer__icon footer__icon--paypal">
+            <a rel="nofollow" href="https://www.paypal.me/mazipan">
+              <i class="fa fa-paypal"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+
+    <article class="main__content content">
+      <div class="content__wrapper">
+
+
+        <router-outlet></router-outlet>
+
+
+      </div>
+    </article>
+
+  </main>
+
+  <script src="https://mazipan.github.io/library/jquery.min.js"></script>
+  <script src="https://use.fontawesome.com/89344806bd.js"></script>
+  <script>
+    function initNavEvent() {
+      var itemchild = $('.nav__item--child');
+      itemchild.on('click', function () {
+        var target = $(this);
+
+        $(target).stop(true, true);
+        $(target).siblings().removeClass('nav__item--active');
+        $(target).addClass('nav__item--active');
+
+        //un-comment if you won't redirect to other url
+        //return false;
+      });
+
+      var item = $('.nav__item');
+      item.on('click', function () {
+        var target = $(this);
+
+        $(target).addClass('nav__item--active');
+        var siblings = $(target).siblings();
+
+        $.each(siblings, function (i, el) {
+          if ($(el).hasClass('nav__item--has-child')) {
+            $(el).find('.nav__wrapper--child').slideUp();
+          }
+          $(el).removeClass('nav__item--active');
+        });
+
+        if ($(target).hasClass('nav__item--has-child')) {
+          $(target).find('.nav__item--child').removeClass('nav__item--active');
+          $(target).find('.nav__arrow').toggleClass('nav__arrow--active');
+          $(target).find('.nav__wrapper--child').slideToggle();
+        }
+
+        //un-comment if you won't redirect to other url
+        //return false;
+      });
+    }
+
+
+    function initAccountPopover() {
+      var item = $('.account--has-login');
+      item.hover(function () {
+        var menu = $(this).find('.account__menu');
+        $(menu).stop(true, true).slideDown();
+      }, function () {
+        var menu = $(this).find('.account__menu');
+        $(menu).stop(true, true).delay(1000).slideUp();
+      });
+
+      var menuEl = $('.account__menu');
+      menuEl.hover(function () {
+        $(this).stop(true, true);
+      }, function () {
+        $(this).stop(true, true).delay(1000).slideUp();
+      });
+    }
+
+
+    function initOffCanvasMenu() {
+      $('.header__nav-btn').on('click', function () {
+        $(this).toggleClass('header__nav-btn--close');
+        $('.nav').toggleClass('nav--opened');
+      });
+    }
+
+    $(document).ready(function () {
+      'use strict';
+      initNavEvent();
+      initAccountPopover();
+      initOffCanvasMenu();
+    });
+
+    $(window).load(function () {
+      'use strict';
+    });
+  </script>
+
 
   <!--  <p>Please login.</p>-->
-<!--  <button (click)="login()">Login with Google</button>-->
+  <!--  <button (click)="login()">Login with Google</button>-->
 </ng-template>
