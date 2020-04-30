@@ -15,9 +15,22 @@ import {RouterModule, Routes} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 
 import {HttpClientModule} from '@angular/common/http';
-import {UserService} from './services/users.service';
+import {UserService} from './_services/users.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatFormFieldModule, MatInputModule, MatPaginatorModule, MatTableModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule, MatCheckboxModule, MatDialogModule,
+  MatFormFieldModule,
+  MatGridListModule,
+  MatInputModule,
+  MatPaginatorModule, MatSidenavModule,
+  MatSlideToggleModule,
+  MatTableModule
+} from '@angular/material';
+import { ModelsComponent } from './models/models.component';
+import { DialogComponent } from './models/dialog/dialog.component';
+import {FormsModule} from '@angular/forms';
+import {ModelsService} from './_services/models.service';
 
 
 const config = {
@@ -35,7 +48,9 @@ const config = {
     AppComponent,
     MapComponent,
     UsersComponent,
-    BraceletsComponent
+    BraceletsComponent,
+    ModelsComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,12 +67,22 @@ const config = {
     MatTableModule,
     MatInputModule,
     MatPaginatorModule,
+    MatSlideToggleModule,
+    MatGridListModule,
+    MatCardModule,
+    MatButtonModule,
+    FormsModule,
+    MatDialogModule,
+    MatSidenavModule,
+    MatCheckboxModule,
   ],
   providers: [
     ScriptLoadService,
-    UserService
+    UserService,
+    ModelsService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ DialogComponent ]
 })
 export class AppModule {
 }

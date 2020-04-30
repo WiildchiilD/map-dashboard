@@ -1,1 +1,13 @@
-<div id="map" class="map" #mapElement></div>
+<mat-drawer-container class="example-container">
+  <!--              opened="true"-->
+  <mat-drawer #sidenav mode="side"
+              [(opened)]="opened"
+              position="end">Drawer content
+  </mat-drawer>
+  <mat-drawer-content>
+    <div id="map" class="map" #mapElement></div>
+    <p>
+      <button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button>
+    </p>
+  </mat-drawer-content>
+</mat-drawer-container>

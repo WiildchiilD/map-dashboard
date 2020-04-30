@@ -21,6 +21,9 @@ export class MapComponent implements OnInit {
 
   map: any;
 
+  events: string[] = [];
+  opened: false;
+
   // maps: any;
   // map: any;
   markersRef: AngularFireList<any>;
@@ -109,6 +112,11 @@ export class MapComponent implements OnInit {
         })
       })
     });
+
+    vectorLayer.on('click', function (args) {
+      console.log('CLICKED LAYER');
+    });
+
     this.map.addLayer(vectorLayer);
   }
 

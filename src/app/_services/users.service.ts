@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from '../models/User';
+import {User} from '../_models/User';
 import {environment} from '../../environments/environment';
+import {ApiResponse} from '../_models/ApiResponse';
 
 @Injectable()
 export class UserService {
@@ -12,6 +13,10 @@ export class UserService {
 
   getAll() {
     return this.http.get<User[]>(`${environment.apiUrl}/users`);
+  }
+
+  verifyUser(id: String, value: Boolean) {
+    return this.http.get<ApiResponse<Boolean, Boolean>>(`${environment.apiUrl}/user/${id}/to/${value}`);
   }
 
   getById(id: string) {
