@@ -1,0 +1,13 @@
+img {
+  width: 70px;
+  height: 70px;
+}
+
+mat-card {
+  width: 80%;
+  height: 95%;
+}
+
+mat-grid-list{
+  width: 80%;
+}

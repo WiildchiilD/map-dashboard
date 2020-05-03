@@ -1,0 +1,35 @@
+<mat-grid-list cols="4"
+               rowHeight="100px" [gutterSize]="'10px'">
+  <mat-grid-tile
+    *ngFor="let model of models"
+    [colspan]="2"
+    [rowspan]="2"
+    [style.background]="model.couleur">
+
+
+    <mat-card class="mat-card">
+      <mat-card-header>
+        <mat-card-title>{{model.name}}</mat-card-title>
+        <mat-card-subtitle>{{model.version}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <img mat-card-image class="card-image" src="{{model.url}}" alt="{{model.name}}"/>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+      </mat-card-actions>
+    </mat-card>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-card class="mat-card">
+      <mat-card-content>
+        <img (click)="createModel()" mat-card-image class="card-image" src="../../assets/img/marker-30.png" alt="Add model"/>
+      </mat-card-content>
+
+    </mat-card>
+
+  </mat-grid-tile>
+
+</mat-grid-list>
