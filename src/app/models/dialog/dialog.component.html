@@ -1,11 +1,25 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
+<h2 mat-dialog-title>{{description}}</h2>
+
+<mat-dialog-content [formGroup]="form">
+
   <mat-form-field>
-    <input matInput [(ngModel)]="data.animal">
+    <input matInput
+           placeholder="Add a version"
+           formControlName="description">
   </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
-</div>
+
+  <mat-form-field>
+    <mat-label>Select a model</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let model of models" [value]="model.name">
+        {{model.version}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="onNoClick()">Close</button>
+  <button class="mat-raised-button mat-primary" (click)="onNoClick()">Save</button>
+</mat-dialog-actions>

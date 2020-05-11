@@ -2,8 +2,9 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../_services/users.service';
 import {User} from '../_models/User';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator} from '@angular/material';
+import {MatDialog, MatPaginator} from '@angular/material';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {ConfirmationDialogComponent} from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-users',
@@ -14,12 +15,13 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 export class UsersComponent implements OnInit {
   private users: User[];
 
-  displayedColumns: string[] = ['firstname', 'lastname', 'email', 'verified'];
+  displayedColumns: string[] = ['firstname', 'lastname', 'email', 'verified', 'Operation'];
   dataSource = new MatTableDataSource([]);
 
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    public dialog: MatDialog
   ) {
   }
 
@@ -28,6 +30,19 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     // load all users
     this.loadAllUsers();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: 'Do you confirm the deletion of this data?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Yes clicked');
+        // DO SOMETHING
+      }
+    });
   }
 
 
@@ -54,5 +69,9 @@ export class UsersComponent implements OnInit {
           // MAY POP UP SOME ERROR
         }
       });
+  }
+
+  deleteUser(element: number) {
+    this.openDialog();
   }
 }

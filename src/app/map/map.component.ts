@@ -10,7 +10,12 @@ import * as $ from 'jquery';
 import {UserService} from '../_services/users.service';
 import {LocationHistoryService} from '../_services/location-history.service';
 import {forEach} from '@angular/router/src/utils/collection';
-import {MatSidenav} from '@angular/material';
+import {MatSidenav, MatTableDataSource} from '@angular/material';
+import {Bracelet} from '../_models/Bracelet';
+import {User} from '../_models/User';
+import {History} from '../_models/History';
+import {ActivatedRoute} from '@angular/router';
+import {catchError} from 'rxjs/operators';
 
 declare var ol: any;
 
@@ -37,10 +42,19 @@ export class MapComponent implements OnInit {
 
   locationHistory = [];
 
+  currentSelectedHistory: History;
+
   @ViewChild('sidenav') sidenav: MatSidenav;
   @ViewChild('mapElement') mapElm: ElementRef;
 
-  constructor(private locationService: LocationHistoryService) {
+  displayedColumns: string[] = ['place', 'time'];
+  dataSource = new MatTableDataSource([]);
+
+
+  constructor(
+    private locationService: LocationHistoryService,
+    private route: ActivatedRoute
+  ) {
 
   }
 
@@ -76,7 +90,13 @@ export class MapComponent implements OnInit {
       })
     });
 
-    this.loadLocations();
+    this.loadLocations(function (instance) {
+      const braceletId = instance.route.snapshot.params['braceletid'];
+      if (braceletId) {
+        console.log('Received id to locate' + braceletId);
+        instance.loadWithBraceletID(braceletId);
+      }
+    });
 
 
     this.map.on('click', () => {
@@ -85,24 +105,36 @@ export class MapComponent implements OnInit {
 
     this.map.on('click', (evt) => {
       this.map.forEachFeatureAtPixel(evt.pixel, (feature, layer) => {
-
-        console.log(layer.N.identifier);
+        console.log(layer);
         this.getInfoWithID(layer.N.identifier);
-
+        this.setCenter(layer.N.lat, layer.N.lng);
       });
     });
 
 
-    // this.addPoint(this.latitude, this.longitude,"");
-
   }
 
+  loadWithBraceletID(id: string) {
+    try {
+      console.log(this.locationHistory);
+      const braceletHistory: History = this.locationHistory.filter(history =>
+        // console.log(history[0]);
+        history.bracelet._id === id
+      )[0];
 
-  loadLocations() {
+      this.getInfoWithID(braceletHistory._id);
+      this.setCenter(Number(braceletHistory.latitude), Number(braceletHistory.longitude));
+    } catch (e) {
+
+    }
+  }
+
+  loadLocations(callback: (any) => void) {
     this.locationService.getAll().subscribe(locations => {
       console.log(locations);
       this.locationHistory = locations;
       this.pinLocations();
+      callback(this);
     });
   }
 
@@ -111,15 +143,35 @@ export class MapComponent implements OnInit {
     this.locationHistory.forEach(location => {
       if (location != null) {
         console.log('Adding location  : ' + location.longitude + ' - ' + location.latitude);
-        this.addPoint(Number(location.longitude), Number(location.latitude), location._id);
+        this.addPoint(Number(location.latitude), Number(location.longitude), location._id);
       }
     });
   }
 
   getInfoWithID(id: String) {
     const history = this.locationHistory.filter(hist => hist._id === id);
-    console.log(history);
+    console.log(history[0]);
+    this.currentSelectedHistory = history[0];
+
+
+    console.log(this.currentSelectedHistory.bracelet._id);
+    this.locationService
+      .getAllById(this.currentSelectedHistory.bracelet._id)
+      .subscribe(histories => {
+        console.log('LOADED : ' + histories);
+        this.dataSource = new MatTableDataSource(histories);
+      });
+
+    this.loadSideNavWithUser(history[0].user, history[0].bracelet);
     this.sidenav.open();
+  }
+
+  getBraceletHistory(id: string) {
+    return this.locationService.getAllById(id);
+  }
+
+  loadSideNavWithUser(user: User, bracelet: Bracelet) {
+
   }
 
   clearAll() {
@@ -129,10 +181,10 @@ export class MapComponent implements OnInit {
     this.markersArray = [];
   }
 
-  setCenter() {
+  setCenter(lat: number, lng: number) {
     const view = this.map.getView();
-    view.setCenter(ol.proj.fromLonLat([this.longitude, this.latitude]));
-    view.addMarker(ol.proj.fromLonLat([this.longitude, this.latitude]));
+    view.setCenter(ol.proj.fromLonLat([lng, lat]));
+    // view.addMarker(ol.proj.fromLonLat([this.longitude, this.latitude]));
     view.setZoom(8);
   }
 
@@ -154,6 +206,9 @@ export class MapComponent implements OnInit {
     });
 
     vectorLayer.set('identifier', identifier);
+    vectorLayer.set('lat', lat);
+    vectorLayer.set('lng', lng);
+
 
     this.map.addLayer(vectorLayer);
 
@@ -161,4 +216,8 @@ export class MapComponent implements OnInit {
 
   }
 
+  locateCurrentSelected() {
+    console.log(this.currentSelectedHistory.latitude, this.currentSelectedHistory.longitude);
+    this.setCenter(Number(this.currentSelectedHistory.latitude), Number(this.currentSelectedHistory.longitude));
+  }
 }

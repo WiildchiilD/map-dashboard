@@ -8,6 +8,7 @@ import {ModelsComponent} from './models/models.component';
 const routes: Routes = [
   {path: '', component: MapComponent},
   {path: 'dashboard', component: MapComponent},
+  {path: 'dashboard/locate/:braceletid', component: MapComponent},
   {path: 'users', component: UsersComponent},
   {path: 'bracelets', component: BraceletsComponent},
   {path: 'models', component: ModelsComponent},

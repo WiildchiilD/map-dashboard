@@ -23,14 +23,17 @@ import {
   MatFormFieldModule,
   MatGridListModule,
   MatInputModule,
-  MatPaginatorModule, MatSidenavModule,
+  MatPaginatorModule, MatSelectModule, MatSidenavModule,
   MatSlideToggleModule,
   MatTableModule
 } from '@angular/material';
 import { ModelsComponent } from './models/models.component';
 import { DialogComponent } from './models/dialog/dialog.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ModelsService} from './_services/models.service';
+import { NavcontentComponent } from './map/navcontent/navcontent.component';
+import {TimeagoModule} from 'ngx-timeago';
+import {ConfirmationDialogComponent} from './confirmation-dialog/confirmation-dialog.component';
 
 
 const config = {
@@ -50,7 +53,9 @@ const config = {
     UsersComponent,
     BraceletsComponent,
     ModelsComponent,
-    DialogComponent
+    DialogComponent,
+    NavcontentComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +80,9 @@ const config = {
     MatDialogModule,
     MatSidenavModule,
     MatCheckboxModule,
+    TimeagoModule.forRoot(),
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [
     ScriptLoadService,
@@ -82,7 +90,7 @@ const config = {
     ModelsService,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ DialogComponent ]
+  entryComponents: [ DialogComponent, ConfirmationDialogComponent ]
 })
 export class AppModule {
 }

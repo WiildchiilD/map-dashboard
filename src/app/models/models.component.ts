@@ -36,12 +36,12 @@ export class ModelsComponent implements OnInit {
 
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
-      data: {name: '', animal: ''}
+      data: {firstname: '', lastname: ''}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      //this.animal = result;
+      // this.animal = result;
     });
 
   }

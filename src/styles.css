@@ -33,7 +33,8 @@ button {
 .account__menu-wrapper, .nav__wrapper {
   margin: 0;
   padding: 0;
-  list-style: none; }
+  list-style: none;
+}
 
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
@@ -53,7 +54,8 @@ html {
   -ms-text-size-adjust: 100%;
   /* 3 */
   -webkit-text-size-adjust: 100%;
-  /* 3 */ }
+  /* 3 */
+}
 
 /* Sections
    ========================================================================== */
@@ -62,7 +64,8 @@ html {
  */
 /* line 27, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 body {
-  margin: 0; }
+  margin: 0;
+}
 
 /**
  * Add the correct display in IE 9-.
@@ -74,7 +77,8 @@ footer,
 header,
 nav,
 section {
-  display: block; }
+  display: block;
+}
 
 /**
  * Correct the font size and margin on `h1` elements within `section` and
@@ -83,7 +87,8 @@ section {
 /* line 49, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 h1 {
   font-size: 2em;
-  margin: 0.67em 0; }
+  margin: 0.67em 0;
+}
 
 /* Grouping content
    ========================================================================== */
@@ -96,14 +101,16 @@ figcaption,
 figure,
 main {
   /* 1 */
-  display: block; }
+  display: block;
+}
 
 /**
  * Add the correct margin in IE 8.
  */
 /* line 72, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 figure {
-  margin: 1em 40px; }
+  margin: 1em 40px;
+}
 
 /**
  * 1. Add the correct box sizing in Firefox.
@@ -116,7 +123,8 @@ hr {
   height: 0;
   /* 1 */
   overflow: visible;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
@@ -127,7 +135,8 @@ pre {
   font-family: monospace, monospace;
   /* 1 */
   font-size: 1em;
-  /* 2 */ }
+  /* 2 */
+}
 
 /* Text-level semantics
    ========================================================================== */
@@ -140,7 +149,8 @@ a {
   background-color: transparent;
   /* 1 */
   -webkit-text-decoration-skip: objects;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Remove the outline on focused links when they are also active or hovered
@@ -149,7 +159,8 @@ a {
 /* line 115, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 a:active,
 a:hover {
-  outline-width: 0; }
+  outline-width: 0;
+}
 
 /**
  * 1. Remove the bottom border in Firefox 39-.
@@ -162,7 +173,8 @@ abbr[title] {
   text-decoration: underline;
   /* 2 */
   text-decoration: underline dotted;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
@@ -170,7 +182,8 @@ abbr[title] {
 /* line 135, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 b,
 strong {
-  font-weight: inherit; }
+  font-weight: inherit;
+}
 
 /**
  * Add the correct font weight in Chrome, Edge, and Safari.
@@ -178,7 +191,8 @@ strong {
 /* line 144, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 b,
 strong {
-  font-weight: bolder; }
+  font-weight: bolder;
+}
 
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
@@ -191,14 +205,16 @@ samp {
   font-family: monospace, monospace;
   /* 1 */
   font-size: 1em;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Add the correct font style in Android 4.3-.
  */
 /* line 165, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 dfn {
-  font-style: italic; }
+  font-style: italic;
+}
 
 /**
  * Add the correct background and color in IE 9-.
@@ -206,14 +222,16 @@ dfn {
 /* line 173, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 mark {
   background-color: #ff0;
-  color: #000; }
+  color: #000;
+}
 
 /**
  * Add the correct font size in all browsers.
  */
 /* line 182, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 small {
-  font-size: 80%; }
+  font-size: 80%;
+}
 
 /**
  * Prevent `sub` and `sup` elements from affecting the line height in
@@ -225,15 +243,18 @@ sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+}
 
 /* line 199, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 sub {
-  bottom: -0.25em; }
+  bottom: -0.25em;
+}
 
 /* line 203, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 sup {
-  top: -0.5em; }
+  top: -0.5em;
+}
 
 /* Embedded content
    ========================================================================== */
@@ -243,7 +264,8 @@ sup {
 /* line 214, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 audio,
 video {
-  display: inline-block; }
+  display: inline-block;
+}
 
 /**
  * Add the correct display in iOS 4-7.
@@ -251,21 +273,24 @@ video {
 /* line 223, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 audio:not([controls]) {
   display: none;
-  height: 0; }
+  height: 0;
+}
 
 /**
  * Remove the border on images inside links in IE 10-.
  */
 /* line 232, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 img {
-  border-style: none; }
+  border-style: none;
+}
 
 /**
  * Hide the overflow in IE.
  */
 /* line 240, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 svg:not(:root) {
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 /* Forms
    ========================================================================== */
@@ -286,7 +311,8 @@ textarea {
   line-height: 1.15;
   /* 1 */
   margin: 0;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Show the overflow in IE.
@@ -296,7 +322,8 @@ textarea {
 button,
 input {
   /* 1 */
-  overflow: visible; }
+  overflow: visible;
+}
 
 /**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
@@ -306,7 +333,8 @@ input {
 button,
 select {
   /* 1 */
-  text-transform: none; }
+  text-transform: none;
+}
 
 /**
  * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
@@ -319,7 +347,8 @@ html [type="button"],
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Remove the inner border and padding in Firefox.
@@ -330,7 +359,8 @@ button::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
   border-style: none;
-  padding: 0; }
+  padding: 0;
+}
 
 /**
  * Restore the focus styles unset by the previous rule.
@@ -340,7 +370,8 @@ button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText; }
+  outline: 1px dotted ButtonText;
+}
 
 /**
  * Change the border, margin, and padding in all browsers (opinionated).
@@ -349,7 +380,8 @@ button:-moz-focusring,
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em; }
+  padding: 0.35em 0.625em 0.75em;
+}
 
 /**
  * 1. Correct the text wrapping in Edge and IE.
@@ -370,7 +402,8 @@ legend {
   padding: 0;
   /* 3 */
   white-space: normal;
-  /* 1 */ }
+  /* 1 */
+}
 
 /**
  * 1. Add the correct display in IE 9-.
@@ -381,14 +414,16 @@ progress {
   display: inline-block;
   /* 1 */
   vertical-align: baseline;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Remove the default vertical scrollbar in IE.
  */
 /* line 359, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 textarea {
-  overflow: auto; }
+  overflow: auto;
+}
 
 /**
  * 1. Add the correct box sizing in IE 10-.
@@ -400,7 +435,8 @@ textarea {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
@@ -408,7 +444,8 @@ textarea {
 /* line 378, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
-  height: auto; }
+  height: auto;
+}
 
 /**
  * 1. Correct the odd appearance in Chrome and Safari.
@@ -419,7 +456,8 @@ textarea {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
@@ -427,7 +465,8 @@ textarea {
 /* line 397, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none; }
+  -webkit-appearance: none;
+}
 
 /**
  * 1. Correct the inability to style clickable types in iOS and Safari.
@@ -438,7 +477,8 @@ textarea {
   -webkit-appearance: button;
   /* 1 */
   font: inherit;
-  /* 2 */ }
+  /* 2 */
+}
 
 /* Interactive
    ========================================================================== */
@@ -449,14 +489,16 @@ textarea {
 /* line 420, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 details,
 menu {
-  display: block; }
+  display: block;
+}
 
 /*
  * Add the correct display in all browsers.
  */
 /* line 429, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 summary {
-  display: list-item; }
+  display: list-item;
+}
 
 /* Scripting
    ========================================================================== */
@@ -465,14 +507,16 @@ summary {
  */
 /* line 440, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 canvas {
-  display: inline-block; }
+  display: inline-block;
+}
 
 /**
  * Add the correct display in IE.
  */
 /* line 448, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 template {
-  display: none; }
+  display: none;
+}
 
 /* Hidden
    ========================================================================== */
@@ -481,7 +525,8 @@ template {
  */
 /* line 459, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_normalize.scss */
 [hidden] {
-  display: none; }
+  display: none;
+}
 
 /* line 1, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_base.scss */
 html {
@@ -491,54 +536,68 @@ html {
   font-size: 62.5%;
   color: #333333;
   -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: transparent;
+}
 
 /* line 8, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_base.scss */
 *, *:before, *:after {
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 /* line 11, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_base.scss */
 body {
   font-size: 1.3rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
 
 /* line 16, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_base.scss */
 a {
   color: #068AC9;
-  text-decoration: none; }
+  text-decoration: none;
+}
+
 /* line 20, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_base.scss */
 a:hover, a:focus {
-  text-decoration: underline; }
+  text-decoration: underline;
+}
 
 /* line 25, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_base.scss */
 code, kbd, pre, samp {
   background-color: #eaeaea;
   padding: .1em .5em;
-  border-radius: .1em; }
+  border-radius: .1em;
+}
 
 /* line 31, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_base.scss */
 blockquote {
   padding: 10px;
   margin: 0 0 20px;
   font-size: 1.6rem;
-  border-left: 5px solid #eee; }
+  border-left: 5px solid #eee;
+}
 
 /* line 38, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_base.scss */
 textarea {
-  resize: none; }
+  resize: none;
+}
 
 /* line 5, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/_components/_grids.scss */
 .content__wrapper {
   *zoom: 1;
   margin: 0 auto;
-  max-width: 92.308em; }
+  /*max-width: 99.308em;*/
+}
+
 /* line 4, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/mixins/_clearfix.scss */
 .content__wrapper:before, .content__wrapper:after {
   display: table;
-  content: ' '; }
+  content: ' ';
+}
+
 /* line 10, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/mixins/_clearfix.scss */
 .content__wrapper:after {
-  clear: both; }
+  clear: both;
+}
 
 /*
 border: 1px solid #00d1b2;
@@ -559,36 +618,49 @@ top: 50%;
 @-webkit-keyframes animatetop {
   from {
     top: -300px;
-    opacity: 0; }
+    opacity: 0;
+  }
   to {
     top: 0;
-    opacity: 1; } }
+    opacity: 1;
+  }
+}
 
 @keyframes animatetop {
   from {
     top: -300px;
-    opacity: 0; }
+    opacity: 0;
+  }
   to {
     top: 0;
-    opacity: 1; } }
+    opacity: 1;
+  }
+}
 
 /*
 -- SITE BLOCK --
 */
 /* line 12, D:/Github/lightweight-admin-template/sass/lightweight-admin-template.scss */
 .site {
-  margin: 0; }
+  margin: 0;
+}
+
 /* line 16, D:/Github/lightweight-admin-template/sass/lightweight-admin-template.scss */
 .site__main {
   *zoom: 1;
-  margin-top: 60px; }
+  margin-top: 60px;
+}
+
 /* line 4, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/mixins/_clearfix.scss */
 .site__main:before, .site__main:after {
   display: table;
-  content: ' '; }
+  content: ' ';
+}
+
 /* line 10, D:/Github/lightweight-admin-template/node_modules/bem-kit/src/_scss/mixins/_clearfix.scss */
 .site__main:after {
-  clear: both; }
+  clear: both;
+}
 
 /*
 -- MAIN BLOCK --
@@ -596,12 +668,15 @@ top: 50%;
 /* line 7, D:/Github/lightweight-admin-template/sass/blocks/_main.scss */
 .main__jumbotron {
   width: 100%;
-  height: 500px; }
+  height: 500px;
+}
+
 /* line 12, D:/Github/lightweight-admin-template/sass/blocks/_main.scss */
 .main__jumbotron-wrapper {
   margin: 0 auto;
   padding-top: 10em;
-  padding-left: 3em; }
+  padding-left: 3em;
+}
 
 /*
 -- HEADER BLOCK --
@@ -613,7 +688,9 @@ top: 50%;
   width: 100%;
   height: 60px;
   background-color: #666666;
-  color: #ffffff; }
+  color: #ffffff;
+}
+
 /* line 16, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
 .header__wrapper {
   display: -webkit-box;
@@ -625,7 +702,9 @@ top: 50%;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  height: 100%; }
+  height: 100%;
+}
+
 /* line 24, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
 .header__brand {
   -webkit-box-align: center;
@@ -635,28 +714,42 @@ top: 50%;
   -ms-flex-pack: justify;
   justify-content: space-between;
   margin: .2em;
-  display: none; }
+  display: none;
+}
+
 @media only screen and (min-width: 600px) {
   /* line 24, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
   .header__brand {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex; } }
+    display: flex;
+  }
+}
+
 /* line 37, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
 .header__brand img {
-  height: 45px; }
+  height: 45px;
+}
+
 /* line 42, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
 .header__title {
   margin-left: .5em;
   font-weight: 500;
-  font-size: 1.8rem; }
+  font-size: 1.8rem;
+}
+
 /* line 51, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
 .header__nav--mobile {
-  display: block; }
+  display: block;
+}
+
 @media only screen and (min-width: 600px) {
   /* line 51, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
   .header__nav--mobile {
-    display: none; } }
+    display: none;
+  }
+}
+
 /* line 60, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
 .header__nav-btn {
   -webkit-transform: rotate(0deg);
@@ -667,7 +760,9 @@ top: 50%;
   margin: 1em;
   width: 40px;
   height: 30px;
-  cursor: pointer; }
+  cursor: pointer;
+}
+
 /* line 71, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
 .header__nav-btn span {
   -webkit-transform: rotate(0deg);
@@ -680,29 +775,42 @@ top: 50%;
   width: 100%;
   height: 3px;
   background: #ffffff;
-  opacity: 1; }
+  opacity: 1;
+}
+
 /* line 84, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
 .header__nav-btn span:nth-child(1) {
-  top: 0; }
+  top: 0;
+}
+
 /* line 88, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
 .header__nav-btn span:nth-child(2), .header__nav-btn span:nth-child(3) {
-  top: 10px; }
+  top: 10px;
+}
+
 /* line 93, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
 .header__nav-btn span:nth-child(4) {
-  top: 20px; }
+  top: 20px;
+}
+
 /* line 102, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
 .header__nav-btn--close span:nth-child(1), .header__nav-btn--close span:nth-child(4) {
   top: 10px;
   left: 50%;
-  width: 0; }
+  width: 0;
+}
+
 /* line 108, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
 .header__nav-btn--close span:nth-child(2) {
   -webkit-transform: rotate(45deg);
-  transform: rotate(45deg); }
+  transform: rotate(45deg);
+}
+
 /* line 112, D:/Github/lightweight-admin-template/sass/blocks/_header.scss */
 .header__nav-btn--close span:nth-child(3) {
   -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg); }
+  transform: rotate(-45deg);
+}
 
 /*
 -- ACCOUNT BLOCK --
@@ -719,32 +827,45 @@ top: 50%;
   height: 100%;
   width: 200px;
   background-color: #333333;
-  display: none; }
+  display: none;
+}
+
 @media only screen and (min-width: 600px) {
   /* line 7, D:/Github/lightweight-admin-template/sass/blocks/_account.scss */
   .account {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex; } }
+    display: flex;
+  }
+}
+
 /* line 23, D:/Github/lightweight-admin-template/sass/blocks/_account.scss */
 .account--has-login {
-  cursor: pointer; }
+  cursor: pointer;
+}
+
 /* line 27, D:/Github/lightweight-admin-template/sass/blocks/_account.scss */
 .account__img {
   border-radius: 50%;
   margin: -10px 0;
   margin-right: 10px;
-  height: 28px; }
+  height: 28px;
+}
+
 /* line 35, D:/Github/lightweight-admin-template/sass/blocks/_account.scss */
 .account__arrow {
-  padding-left: 20px; }
+  padding-left: 20px;
+}
+
 /* line 40, D:/Github/lightweight-admin-template/sass/blocks/_account.scss */
 .account__menu {
   display: none;
   position: absolute;
   width: 200px;
   top: 60px;
-  right: 0; }
+  right: 0;
+}
+
 /* line 52, D:/Github/lightweight-admin-template/sass/blocks/_account.scss */
 .account__menu-item > a {
   position: relative;
@@ -752,10 +873,13 @@ top: 50%;
   padding: 1em 20px;
   background-color: #333333;
   color: #ffffff;
-  text-decoration: none; }
+  text-decoration: none;
+}
+
 /* line 61, D:/Github/lightweight-admin-template/sass/blocks/_account.scss */
 .account__menu-item > a:hover, .account__menu-item > a:active, .account__menu-item > a:focus {
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 /*
 -- NAV BLOCK --
@@ -779,41 +903,62 @@ top: 50%;
   transition: transform 0.4s;
   transition: transform 0.4s, -webkit-transform 0.4s;
   -webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1); }
+  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+}
+
 @media only screen and (min-width: 600px) {
   /* line 8, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
   .nav {
     -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0); } }
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 /* line 32, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
 .nav--opened {
   -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0); }
+  transform: translate3d(0, 0, 0);
+}
+
 /* line 38, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
 .nav::-webkit-scrollbar-track {
-  background-color: transparent; }
+  background-color: transparent;
+}
+
 /* line 43, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
 .nav::-webkit-scrollbar {
   width: 8px;
-  background-color: transparent; }
+  background-color: transparent;
+}
+
 /* line 49, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
 .nav::-webkit-scrollbar-thumb {
-  background-color: #b4b4b4; }
+  background-color: #b4b4b4;
+}
+
 /* line 58, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
 .nav__wrapper--child {
   display: none;
   padding: 10px 0;
   padding-left: 1.5em;
-  background-color: #404040; }
+  background-color: #404040;
+}
+
 /* line 65, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
 .nav__wrapper--is-open {
-  display: block; }
+  display: block;
+}
+
 /* line 70, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
 .nav__icon {
-  width: 20px; }
+  width: 20px;
+}
+
 /* line 77, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
 .nav__item--active > a {
-  border-left: 3px solid #37a6c4; }
+  border-left: 3px solid #37a6c4;
+}
+
 /* line 82, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
 .nav__item > a {
   position: relative;
@@ -821,10 +966,14 @@ top: 50%;
   padding: 1em;
   background-color: #595959;
   color: #ffffff;
-  text-decoration: none; }
+  text-decoration: none;
+}
+
 /* line 91, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
 .nav__item > a:hover, .nav__item > a:active, .nav__item > a:focus {
-  text-decoration: none; }
+  text-decoration: none;
+}
+
 /* line 98, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
 .nav__item--child > a {
   position: relative;
@@ -832,10 +981,14 @@ top: 50%;
   padding: 1em;
   background-color: #404040;
   color: #ffffff;
-  text-decoration: none; }
+  text-decoration: none;
+}
+
 /* line 107, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
 .nav__item--child > a:hover, .nav__item--child > a:active, .nav__item--child > a:focus {
-  text-decoration: none; }
+  text-decoration: none;
+}
+
 /* line 114, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
 .nav__arrow {
   float: right;
@@ -844,11 +997,14 @@ top: 50%;
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s; }
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
 /* line 120, D:/Github/lightweight-admin-template/sass/blocks/_nav.scss */
 .nav__arrow--active {
   -webkit-transform: rotate(180deg);
-  transform: rotate(180deg); }
+  transform: rotate(180deg);
+}
 
 /*
 -- FOOTER BLOCK --
@@ -856,29 +1012,35 @@ top: 50%;
 /* line 7, D:/Github/lightweight-admin-template/sass/blocks/_footer.scss */
 .footer__wrapper {
   padding: 1em;
-  margin-top: 70px; }
+  margin-top: 70px;
+}
 
 /* line 12, D:/Github/lightweight-admin-template/sass/blocks/_footer.scss */
 .footer__text {
   font-size: 1.3rem;
   color: #ffffff;
-  padding: .3em; }
+  padding: .3em;
+}
 
 /* line 18, D:/Github/lightweight-admin-template/sass/blocks/_footer.scss */
 .footer__list {
   display: block;
   margin: 0;
   padding: 0;
-  list-style: none; }
+  list-style: none;
+}
 
 /* line 25, D:/Github/lightweight-admin-template/sass/blocks/_footer.scss */
 .footer__icon {
   display: inline-block;
   margin: 0 5px;
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+}
+
 /* line 31, D:/Github/lightweight-admin-template/sass/blocks/_footer.scss */
 .footer__icon i {
-  color: #fff; }
+  color: #fff;
+}
 
 /*
 -- CONTENT BLOCK --
@@ -887,25 +1049,36 @@ top: 50%;
 .content {
   background-color: #ffffff;
   padding: 15px;
-  margin-top: -15px; }
+  margin-top: -15px;
+}
+
 @media only screen and (min-width: 600px) {
   /* line 9, D:/Github/lightweight-admin-template/sass/blocks/_content.scss */
   .content {
-    margin-left: 250px; } }
+    margin-left: 250px;
+  }
+}
+
 /* line 19, D:/Github/lightweight-admin-template/sass/blocks/_content.scss */
 .content__wrapper {
-  padding: 10px 0; }
+  padding: 10px 0;
+}
 
 /* line 34, D:/Github/lightweight-admin-template/sass/lightweight-admin-template.scss */
 .card__wrapper {
-  padding: 1em .5em; }
+  padding: 1em .5em;
+}
 
 /* line 37, D:/Github/lightweight-admin-template/sass/lightweight-admin-template.scss */
 .card__align {
-  text-align: center; }
+  text-align: center;
+}
 
 /* line 40, D:/Github/lightweight-admin-template/sass/lightweight-admin-template.scss */
 .card__big-text {
-  font-size: 10rem; }
+  font-size: 10rem;
+}
 
-body { margin: 0; }
+body {
+  margin: 0;
+}

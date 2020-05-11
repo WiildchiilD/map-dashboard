@@ -1,6 +1,11 @@
 img {
   width: 70px;
   height: 70px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  object-fit: contain;
 }
 
 mat-card {
@@ -8,6 +13,29 @@ mat-card {
   height: 95%;
 }
 
-mat-grid-list{
-  width: 80%;
+/*mat-grid-list{*/
+/*  width: 80%;*/
+/*}*/
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 90%;
+  height: 90%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }
