@@ -1,21 +1,14 @@
-import {Component, AfterViewInit, ViewChild, ElementRef, OnInit} from '@angular/core';
-import {ScriptLoadService} from '../script-load.service';
-import {FirebaseApp} from 'angularfire2';
-import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
+import {Component, ViewChild, ElementRef, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 
 const your_API_key = 'AIzaSyAwVnwE1bEZf_Bkk_pSkGM0XlBSXJocVUY';
 const url = `https://maps.googleapis.com/maps/api/js?key=${your_API_key}&libraries=geometry`;
-import * as $ from 'jquery';
-import {UserService} from '../_services/users.service';
 import {LocationHistoryService} from '../_services/location-history.service';
-import {forEach} from '@angular/router/src/utils/collection';
 import {MatSidenav, MatTableDataSource} from '@angular/material';
 import {Bracelet} from '../_models/Bracelet';
 import {User} from '../_models/User';
 import {History} from '../_models/History';
 import {ActivatedRoute} from '@angular/router';
-import {catchError} from 'rxjs/operators';
 
 declare var ol: any;
 
@@ -34,7 +27,6 @@ export class MapComponent implements OnInit {
   events: string[] = [];
   opened: false;
 
-  markersRef: AngularFireList<any>;
   markers: Observable<any[]>;
   markersArray: Array<any> = [];
   distanceArray: Array<any>;
