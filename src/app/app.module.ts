@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {ScriptLoadService} from './script-load.service';
 
 import {AppComponent} from './app.component';
@@ -81,6 +81,7 @@ const config = {
     UserService,
     ModelsService,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
   entryComponents: [ DialogComponent, ConfirmationDialogComponent, EmailComposerComponent ]
 })

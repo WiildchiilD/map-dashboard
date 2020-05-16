@@ -40,7 +40,7 @@ export class MapComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
   @ViewChild('mapElement') mapElm: ElementRef;
 
-  displayedColumns: string[] = ['place', 'time'];
+  displayedColumns: string[] = ['place', 'time' , 'locate'];
   dataSource = new MatTableDataSource([]);
 
   closeResult = '';
