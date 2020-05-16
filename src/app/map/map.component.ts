@@ -1,14 +1,15 @@
 import {Component, ViewChild, ElementRef, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 
-const your_API_key = 'AIzaSyAwVnwE1bEZf_Bkk_pSkGM0XlBSXJocVUY';
-const url = `https://maps.googleapis.com/maps/api/js?key=${your_API_key}&libraries=geometry`;
 import {LocationHistoryService} from '../_services/location-history.service';
-import {MatSidenav, MatTableDataSource} from '@angular/material';
+import {MatSidenav, MatTableDataSource, MatDialog} from '@angular/material';
 import {Bracelet} from '../_models/Bracelet';
 import {User} from '../_models/User';
 import {History} from '../_models/History';
 import {ActivatedRoute} from '@angular/router';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { EmailComposerComponent } from '../email-composer/email-composer.component';
+import { FormControl, Validators } from '@angular/forms';
 
 declare var ol: any;
 
@@ -42,8 +43,11 @@ export class MapComponent implements OnInit {
   displayedColumns: string[] = ['place', 'time'];
   dataSource = new MatTableDataSource([]);
 
+  closeResult = '';
+
 
   constructor(
+    public dialog: MatDialog,
     private locationService: LocationHistoryService,
     private route: ActivatedRoute
   ) {
@@ -106,6 +110,21 @@ export class MapComponent implements OnInit {
 
   }
 
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(EmailComposerComponent, {
+      width: '400px',
+      data: 'THIS IS AN EMAIL COMPOSER'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Yes clicked');
+        // DO SOMETHING
+      }
+    });
+  }
+
   loadWithBraceletID(id: string) {
     try {
       console.log(this.locationHistory);
@@ -145,14 +164,13 @@ export class MapComponent implements OnInit {
     console.log(history[0]);
     this.currentSelectedHistory = history[0];
 
-
     console.log(this.currentSelectedHistory.bracelet._id);
-    this.locationService
-      .getAllById(this.currentSelectedHistory.bracelet._id)
-      .subscribe(histories => {
-        console.log('LOADED : ' + histories);
-        this.dataSource = new MatTableDataSource(histories);
-      });
+    this.locationService.getAllById(this.currentSelectedHistory.bracelet._id).subscribe(locations => {
+        var histyies : History[] = [];
+        Object.assign(histyies,locations);
+        console.log(histyies);
+        this.dataSource = new MatTableDataSource(histyies);
+      })
 
     this.loadSideNavWithUser(history[0].user, history[0].bracelet);
     this.sidenav.open();

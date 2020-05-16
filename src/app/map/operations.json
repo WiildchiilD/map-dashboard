@@ -1,0 +1,219 @@
+// interface definition
+interface operation {
+        key : OperationKey {.upload_front, .upload_back ,}
+        id : // predefined
+        side : {.logo == 0 , .backside == 2 , .frontside == 1 }
+        value : string
+        order : int
+}
+
+
+{
+"operations": [
+	{
+		"id" : 1,
+        "key" : "upload_frontside",
+        
+        "side": side ,
+        "value": "UPLOAD OPERATION IN SECONDS : 1 second, sub-millisecond precision ", 
+        "order" : "order of the OP"
+	},
+	{
+		"id" : 2,
+		"key" : "upload_bakside",
+        "createdat" : "2020-01-02T16:13:49Z"
+        
+        "side": side ,
+        "value": "UPLOAD OPERATION IN SECONDS : 1 second, sub-millisecond precision ", 
+        "order" : "order of the OP"
+
+	},
+	{
+		"id" : 3,
+        "key" : "upload_logo",
+        
+        "side": 0 ,
+        "value": "UPLOAD OPERATION IN SECONDS : 1 second, sub-millisecond precision ", 
+        "order" : "order of the OP"
+	},
+	{
+		"id" : 4,
+        "key" : "scan_bc", // did press camera button to scan a BC
+        
+        "side": 1 ,
+        "value": "true", 
+        "order" : "order of the OP"
+	},
+	{
+		"id" : 5,
+        "key" : "scan_frontside", // wen about to scanning frontside
+        
+        "side": 1 ,
+        "value": "true", 
+        "order" : "order of the OP"
+	},
+	{
+		"id" : 6,
+		"key" : "scan_backside", // wen about to scanning backside
+        
+        "side": 2 ,
+        "value": "true", 
+        "order" : "order of the OP"
+	},
+	{
+		"id" : 7,
+        "key" : "validate_scan", // when did shoot backside OR front side
+        
+        "side": 1 OR 2 ,
+        "value": "true", 
+        "order" : "order of the OP"
+	},
+	{
+		"id" : 8,
+		"key" : "launh_ocr", // Camera session did end, user did confirm BC's Crop , lanching OCR to read text
+        "createdat" : "2020-01-02T16:13:49Z"
+        
+        "side": 1  , // only for front side  because for backside we have OP relanch OCR
+        "value": "true", 
+        "order" : "order of the OP"
+	},
+	{
+		"id" : 9,
+		"key" : "extract_text",
+        "createdat" : "2020-01-02T16:13:49Z"
+        
+        "side": 1 OR 2  , // after the OCR been lanched returned RAW TEXT , begin entity named recognition , text classification 
+        "value": seconds, milliseconds , 
+        "order" : "order of the OP"
+	},
+	{
+		"id" : 10, /// NOT ANYMORE , CORNER RADIUS HAVE BEEN IGNORED IN ENTIRE APP
+		"key" : "extract_corner_radius",
+        "createdat" : "2020-01-02T16:13:49Z"
+        
+	},
+	{
+		"id" : 11,
+		"key" : "extract_alignement", // wen the BC image have been taken , we extract logo first then we extract_alignement
+        
+        "value": (v)ertical , (h)orizental
+        "order":""
+	},
+	{
+		"id" : 12,
+		"key" : "extract_background_color", // wen the BC image have been taken , we extract logo first then alignement, then BG Color
+        "createdat" : "2020-01-02T16:13:49Z"
+        
+
+        "value" : "HEX COLOR"
+	},
+	{
+		"id" : 13,
+		"key" : "pick_background_color", // ignored 
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 14,
+		"key" : "extract_logo", // wen logo algorithm extract been lanched
+        "createdat" : "2020-01-02T16:13:49Z"
+        
+        value : "true"
+	},
+	{
+		"id" : 15,
+		"key" : "pick_logo", // USER is selecting a logo from the proposition logo list
+        "createdat" : "2020-01-02T16:13:49Z"
+        
+
+	},
+	{
+		"id" : 16,
+		"key" : "select_logo_manualy", // user did crop manually and did press save logo
+        "createdat" : "2020-01-02T16:13:49Z",
+        
+        "side":0,
+        "value" : "true"
+
+        
+	},
+	{
+		"id" : 17,
+		"key" : "proposed_file",
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 18,
+		"key" : "validated_file",
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 19,
+		"key" : "geocoding",
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 20,
+		"key" : "virtual_card_generated",
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 21,
+		"key" : "rotate",
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 22,
+		"key" : "get_ip_record_location",
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 23,
+		"key" : "crop",
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 24,
+		"key" : "send_database",
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 25,
+		"key" : "upload_time",
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 26,
+		"key" : "process_business_card",
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 27,
+		"key" : "data_prefilled_time",
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 28,
+		"key" : "data_validated_time",
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 29,
+		"key" : "virtual_card_time",
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 30,
+		"key" : "resize_image",
+		"createdat" : "2020-02-11T14:22:02Z"
+	},
+	{
+		"id" : 31,
+		"key" : "process_bs_business_card",
+		"createdat" : "2020-01-02T16:13:49Z"
+	},
+	{
+		"id" : 32,
+		"key" : "save_tempbc_locally",
+		"createdat" : "2020-01-11T16:49:49Z"
+	}
+]}

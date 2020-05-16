@@ -1,3 +1,4 @@
+import { Compose } from './../_models/compose';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -21,6 +22,10 @@ export class BraceletService {
 
   pairDevice(braceletid: string, userid: string) {
     return this.http.get<string>(`${environment.apiUrl}/bracelet/affect/${braceletid}/to/${userid}`);
+  }
+
+  sendEmail<T>(compose: Compose){
+    return this.http.post<T>(`${environment.apiTestUrl}/admin/email`, compose);
   }
 
 }

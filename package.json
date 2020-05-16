@@ -24,6 +24,7 @@
     "@angular/router": "^7.2.16",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
     "angular-osm": "^1.2.2",
+    "bootstrap": "^4.5.0",
     "core-js": "^2.5.4",
     "jquery": "^3.5.0",
     "ngx-timeago": "^1.0.4",

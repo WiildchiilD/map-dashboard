@@ -29,8 +29,7 @@ import {ModelsService} from './_services/models.service';
 import { NavcontentComponent } from './map/navcontent/navcontent.component';
 import {TimeagoModule} from 'ngx-timeago';
 import {ConfirmationDialogComponent} from './confirmation-dialog/confirmation-dialog.component';
-
-
+import { EmailComposerComponent } from './email-composer/email-composer.component';
 const config = {
   apiKey: '.',
   authDomain: 'yourapp.firebaseapp.com',
@@ -50,7 +49,8 @@ const config = {
     ModelsComponent,
     DialogComponent,
     NavcontentComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    EmailComposerComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +73,8 @@ const config = {
     MatCheckboxModule,
     TimeagoModule.forRoot(),
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule
   ],
   providers: [
     ScriptLoadService,
@@ -81,7 +82,7 @@ const config = {
     ModelsService,
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ DialogComponent, ConfirmationDialogComponent ]
+  entryComponents: [ DialogComponent, ConfirmationDialogComponent, EmailComposerComponent ]
 })
 export class AppModule {
 }
