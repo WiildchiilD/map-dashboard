@@ -54,32 +54,20 @@
 
       <ul class="nav__wrapper">
         <li class="nav__item nav__item--active">
-          <a>
+          <a routerLink="/">
             <i class="nav__icon fa fa-dashboard"></i> Dashboard
           </a>
         </li>
-
-        <li class="nav__item nav__item--has-child">
-          <a>
-            <i class="nav__icon fa fa-desktop"></i> UI Elements
-            <i class="nav__arrow fa fa-angle-down"></i>
-          </a>
-
-          <ul class="nav__wrapper nav__wrapper--child">
-            <li class="nav__item--child"><a routerLink="/bracelets">Devices</a></li>
-            <li class="nav__item--child"><a routerLink="/users">Users</a></li>
-            <li class="nav__item--child"><a routerLink="/models">Models</a></li>
-            <li class="nav__item--child"><a>Alert</a></li>
-          </ul>
+        <li class="nav__item nav__item--active">
+          <a routerLink="/bracelets">Devices</a>
         </li>
-
-        <li class="nav__item"><a>
-          <i class="nav__icon fa fa-table"></i> Tables</a>
+        <li class="nav__item nav__item--active">
+          <a routerLink="/users">Users</a>
         </li>
-        <li class="nav__item"><a>
-          <i class="nav__icon fa fa-edit"></i> Forms</a>
+        <li class="nav__item nav__item--active">
+          <a routerLink="/models">Models</a>
         </li>
-
+        
       </ul>
 
     </nav>

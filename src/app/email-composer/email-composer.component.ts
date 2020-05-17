@@ -22,6 +22,9 @@ export class EmailComposerComponent{
     public dialogRef: MatDialogRef<EmailComposerComponent>,
     private bService : BraceletService,
     @Inject(MAT_DIALOG_DATA) public message: string) {
+      if (this.message){
+        this.compose.to = message
+      }
   }
 
 

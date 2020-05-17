@@ -10,16 +10,16 @@
       <header>
 
         <!-- here’s the avatar -->
-        <a href="http://ali.shahab.pk">
+        <a>
           <img width="200px" src="{{currentSelectedHistory.bracelet.model.url}}">
         </a>
 
         <!-- the username -->
-        <h1>{{currentSelectedHistory.user.firstname + ' ' + currentSelectedHistory.user.lastname }}</h1>
+        <h1 >{{ currentSelectedHistory.user ? currentSelectedHistory.user.firstname + ' ' + currentSelectedHistory.user.lastname : currentSelectedHistory.bracelet.model.name }}</h1>
         <div timeago [date]="currentSelectedHistory.createdAt"></div>
         <!-- and role or location -->
-        <h2>{{currentSelectedHistory.user.email}}</h2>
-
+        <h2 *ngIf="currentSelectedHistory.user" >{{currentSelectedHistory.user.email}}</h2>
+        <h2 *ngIf="!currentSelectedHistory.user" >Not paired</h2>
       </header>
 
       <!-- bit of a bio; who are you? -->
@@ -35,14 +35,14 @@
           </a>
         </li>
 
-        <li (click)="openDialog()">
+        <li *ngIf="currentSelectedHistory.user" (click)="openDialog()">
           <ion-icon size="large" name="send-outline"></ion-icon>
         </li>
 
       </ul>
 
 
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z2">
+      <table  *ngIf="currentSelectedHistory.user" mat-table [dataSource]="dataSource" class="mat-elevation-z2">
 
 
         <ng-container matColumnDef="place">
@@ -68,7 +68,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRowHistory(row)"></tr>
       </table>
 
-      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      <mat-paginator *ngIf="currentSelectedHistory.user" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     </aside>
 
   </mat-drawer>

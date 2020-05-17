@@ -1,15 +1,18 @@
-import {Component, ViewChild, ElementRef, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
+import { User } from './../_models/User';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
-import {LocationHistoryService} from '../_services/location-history.service';
-import {MatSidenav, MatTableDataSource, MatDialog} from '@angular/material';
-import {Bracelet} from '../_models/Bracelet';
-import {User} from '../_models/User';
-import {History} from '../_models/History';
-import {ActivatedRoute} from '@angular/router';
+import { LocationHistoryService } from '../_services/location-history.service';
+import { MatSidenav, MatTableDataSource, MatDialog } from '@angular/material';
+import { Bracelet } from '../_models/Bracelet';
+import { User } from '../_models/User';
+import { History } from '../_models/History';
+import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { EmailComposerComponent } from '../email-composer/email-composer.component';
 import { FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+import { Location } from '@angular/common';
 
 declare var ol: any;
 
@@ -40,7 +43,7 @@ export class MapComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
   @ViewChild('mapElement') mapElm: ElementRef;
 
-  displayedColumns: string[] = ['place', 'time' , 'locate'];
+  displayedColumns: string[] = ['place', 'time', 'locate'];
   dataSource = new MatTableDataSource([]);
 
   closeResult = '';
@@ -49,7 +52,9 @@ export class MapComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private locationService: LocationHistoryService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
+    private _location: Location
   ) {
 
   }
@@ -82,7 +87,7 @@ export class MapComponent implements OnInit {
       view: new ol.View({
         center: ol.proj.fromLonLat([73.8567, 18.5204]),
         zoom: 3,
-        minZoom: 2,
+        minZoom: 3,
       })
     });
 
@@ -96,6 +101,9 @@ export class MapComponent implements OnInit {
 
 
     this.map.on('click', () => {
+      // clean up maps
+      this.pinLocations()
+
       this.sidenav.close();
     });
 
@@ -115,7 +123,7 @@ export class MapComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(EmailComposerComponent, {
       width: '400px',
-      data: 'THIS IS AN EMAIL COMPOSER'
+      data: this.currentSelectedHistory.user.email // user' email
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -134,10 +142,21 @@ export class MapComponent implements OnInit {
       )[0];
 
       this.getInfoWithID(braceletHistory._id);
-      this.setCenter(Number(braceletHistory.latitude), Number(braceletHistory.longitude));
+      //this.setCenter(Number(braceletHistory.latitude), Number(braceletHistory.longitude));
     } catch (e) {
-
+      // show some error
+      console.log("Couldn find history with given url id, will popup erro")
+      this.openSnackBar("Couldn't find any history to this bracelet", "Return ?").onAction().subscribe(() => {
+        console.log('The snack-bar action was triggered!');
+        this._location.back();
+      });
     }
+  }
+
+  openSnackBar(message: string, action: string) {
+    return this.snackBar.open(message, action, {
+      duration: 10000,
+    });
   }
 
   loadLocations(callback: (any) => void) {
@@ -163,16 +182,17 @@ export class MapComponent implements OnInit {
     const history = this.locationHistory.filter(hist => hist._id === id);
     console.log(history[0]);
     this.currentSelectedHistory = history[0];
-
+    
+    this.clearAll(this.currentSelectedHistory._id)
     console.log(this.currentSelectedHistory.bracelet._id);
     this.locationService.getAllById(this.currentSelectedHistory.bracelet._id).subscribe(locations => {
-        var histyies : History[] = [];
-        Object.assign(histyies,locations);
-        console.log(histyies);
-        this.dataSource = new MatTableDataSource(histyies);
-      })
+      var histyies: History[] = [];
+      Object.assign(histyies, locations);
+      console.log(histyies);
+      this.dataSource = new MatTableDataSource(histyies);
+    })
 
-    this.loadSideNavWithUser(history[0].user, history[0].bracelet);
+    //this.loadSideNavWithUser(history[0].user, history[0].bracelet);
     this.sidenav.open();
   }
 
@@ -184,9 +204,11 @@ export class MapComponent implements OnInit {
 
   }
 
-  clearAll() {
+  clearAll(apart = undefined) {
     this.markersArray.forEach(item => {
-      this.map.removeLayer(item);
+      if (item.N.identifier != apart) {
+        this.map.removeLayer(item);
+      }
     });
     this.markersArray = [];
   }
@@ -195,7 +217,7 @@ export class MapComponent implements OnInit {
     const view = this.map.getView();
     view.setCenter(ol.proj.fromLonLat([lng, lat]));
     // view.addMarker(ol.proj.fromLonLat([this.longitude, this.latitude]));
-    view.setZoom(8);
+    //view.setZoom(10);
   }
 
   addPoint(lat: number, lng: number, identifier: String) {
@@ -224,6 +246,7 @@ export class MapComponent implements OnInit {
 
     this.markersArray.push(vectorLayer);
 
+    console.log("Point adeded")
   }
 
   locateCurrentSelected() {
@@ -231,7 +254,9 @@ export class MapComponent implements OnInit {
     this.setCenter(Number(this.currentSelectedHistory.latitude), Number(this.currentSelectedHistory.longitude));
   }
 
-  getRowHistory(row: any) {
-    console.log(row._id);
+  getRowHistory(history: any) {
+    console.log("ADDING HIST");
+    this.addPoint(Number(history.latitude), Number(history.longitude), history._id);
+    this.setCenter(Number(history.latitude), Number(history.longitude))
   }
 }

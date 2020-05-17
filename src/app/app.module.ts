@@ -20,7 +20,8 @@ import {
   MatInputModule,
   MatPaginatorModule, MatSelectModule, MatSidenavModule,
   MatSlideToggleModule,
-  MatTableModule
+  MatTableModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { ModelsComponent } from './models/models.component';
 import { DialogComponent } from './models/dialog/dialog.component';
@@ -74,7 +75,8 @@ const config = {
     TimeagoModule.forRoot(),
     ReactiveFormsModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [
     ScriptLoadService,
