@@ -230,4 +230,8 @@ export class MapComponent implements OnInit {
     console.log(this.currentSelectedHistory.latitude, this.currentSelectedHistory.longitude);
     this.setCenter(Number(this.currentSelectedHistory.latitude), Number(this.currentSelectedHistory.longitude));
   }
+
+  getRowHistory(row: any) {
+    console.log(row._id);
+  }
 }
